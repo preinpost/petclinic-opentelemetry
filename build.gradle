@@ -30,6 +30,13 @@ ext.springJavaformatCheckstyleVersion = "0.0.43"
 ext.webjarsFontawesomeVersion = "4.7.0"
 ext.webjarsBootstrapVersion = "5.3.3"
 
+configurations {
+  compileOnly {
+    extendsFrom configurations.annotationProcessor
+  }
+}
+
+
 dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-cache'
   implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -38,6 +45,17 @@ dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-validation'
   implementation 'javax.cache:cache-api'
   implementation 'jakarta.xml.bind:jakarta.xml.bind-api'
+
+  implementation 'io.opentelemetry:opentelemetry-exporter-otlp'
+  implementation 'io.opentelemetry:opentelemetry-exporter-logging'
+  implementation 'io.opentelemetry:opentelemetry-api'
+  implementation 'io.opentelemetry:opentelemetry-sdk'
+  implementation 'io.opentelemetry.semconv:opentelemetry-semconv:1.26.0-alpha'
+  implementation 'org.springframework.boot:spring-boot-starter-aop'
+
+  compileOnly 'org.projectlombok:lombok'
+  annotationProcessor 'org.projectlombok:lombok'
+
   runtimeOnly 'org.springframework.boot:spring-boot-starter-actuator'
   runtimeOnly "org.webjars.npm:bootstrap:${webjarsBootstrapVersion}"
   runtimeOnly "org.webjars.npm:font-awesome:${webjarsFontawesomeVersion}"
